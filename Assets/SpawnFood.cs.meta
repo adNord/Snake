@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: dd2176870a1bdbd41aa4ca94f0f9f7fa
+timeCreated: 1629817259
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - foodPrefab: {fileID: 1592874457201782, guid: 6b934499d8ab20e4fbf1e7cc4c0dbd27,
+      type: 2}
+  - borderTop: {fileID: 4800985639518540, guid: 1754f83ac0e2c084bb9b4af34f882a2b,
+      type: 2}
+  - borderBottom: {instanceID: 0}
+  - borderLeft: {instanceID: 0}
+  - borderRight: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

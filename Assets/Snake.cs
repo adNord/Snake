@@ -8,8 +8,6 @@ public class Snake : MonoBehaviour {
 	Vector2 dir = Vector2.right; //starting direction
 	Vector2 currentDir;
 
-	
-
 	List<Transform> tail = new List<Transform>(); // List of tail pieces
 
 	public bool ate = false; //did snek just ate?
@@ -17,12 +15,17 @@ public class Snake : MonoBehaviour {
 
 	public GameObject tailPrefab; //assign tail prefab later
 
+	public GameOverScreen GameOverScreen;
+
 	public float speed = 0.2f;
+
+	bool onTheMove;
 
 	// Use this for initialization
 	void Start () {
 		// call "move" function every speed
 		//InvokeRepeating(Move(), speed, speed); old move update
+		onTheMove = true;
 		StartCoroutine(MoveUpdate());
 		currentDir = dir;
 	}
@@ -73,6 +76,9 @@ public class Snake : MonoBehaviour {
 		for(;;){
 			Move();
 			yield return new WaitForSeconds(speed);
+			if (!onTheMove){
+				break;
+			}
 		}
 
 	}
@@ -83,8 +89,10 @@ public class Snake : MonoBehaviour {
 			ate = true;
 			ateUpdate = true;
 			Destroy(coll.gameObject);
-		} else {
-			//TODO (lose screen)
+		} else if (coll.name.StartsWith("Border")) {
+			onTheMove = false;
+			StopCoroutine(MoveUpdate());
+			GameOverScreen.Setup(40);
 		}
 	}
 }

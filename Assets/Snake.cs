@@ -104,7 +104,7 @@ public class Snake : MonoBehaviour {
 		} else if (coll.name.StartsWith("Border")) {
 			onTheMove = false;
 			StopCoroutine(MoveUpdate());
-			GameOverScreen.Setup(40);
+			GameOverScreen.Setup(currentScore);
 		}
 	}
 }

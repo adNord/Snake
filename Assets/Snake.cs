@@ -10,14 +10,14 @@ public class Snake : MonoBehaviour {
 
 	List<Transform> tail = new List<Transform>(); // List of tail pieces
 
-	public bool ate = false; //did snek just ate?
-	public bool ateUpdate = false;
+	public bool ate; //did snek just ate?
+	public bool ateUpdate;
 
 	public GameObject tailPrefab; //assign tail prefab later
 
 	public GameOverScreen GameOverScreen;
 
-	public float speed = 0.2f;
+	public float speed;
 
 	bool onTheMove;
 
@@ -26,6 +26,12 @@ public class Snake : MonoBehaviour {
 		// call "move" function every speed
 		//InvokeRepeating(Move(), speed, speed); old move update
 		onTheMove = true;
+		speed = 0.2f;
+		ate = false;
+		ateUpdate = false;
+
+		transform.position = new Vector2(0, 0);
+
 		StartCoroutine(MoveUpdate());
 		currentDir = dir;
 	}

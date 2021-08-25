@@ -6,23 +6,25 @@ using System.Linq;
 
 public class Snake : MonoBehaviour {
 
-	Vector2 dir = Vector2.right; //starting direction
-	Vector2 currentDir;
 
-	List<Transform> tail = new List<Transform>(); // List of tail pieces
-
-	public bool ate; //did snek just ate?
-	public bool ateUpdate;
-
-	public GameObject tailPrefab; //assign tail prefab later
+	// Game variables
 	public Text Score;				// Displays "Score: x"
 	private int currentScore = 0;	// Keeps track
 
 	public GameOverScreen GameOverScreen;
 
+	// Snek variables:
+	public GameObject tailPrefab; //assign tail prefab later
+	List<Transform> tail = new List<Transform>(); // List of tail pieces
 	public float speed;
-
 	bool onTheMove;
+	public bool ate; //did snek just ate?
+	public bool ateUpdate;
+	Vector2 dir = Vector2.right; //starting direction
+	Vector2 currentDir;
+
+	AudioSource asWalking;
+	AudioSource asFoodPickup;
 
 	// Use this for initialization
 	void Start () {
@@ -32,11 +34,14 @@ public class Snake : MonoBehaviour {
 		speed = 0.2f;
 		ate = false;
 		ateUpdate = false;
-
+	
 		transform.position = new Vector2(0, 0);
 
 		StartCoroutine(MoveUpdate());
 		currentDir = dir;
+
+		asWalking = GetComponents<AudioSource>()[0];
+		asFoodPickup = GetComponents<AudioSource>()[1];
 
 		Score.text = "Score: " + currentScore; 
 	}
@@ -63,6 +68,7 @@ public class Snake : MonoBehaviour {
 	}
 
 	void Move() {
+
 		// save current pos, (where gap is)
 		Vector2 v = transform.position;
 
@@ -71,11 +77,11 @@ public class Snake : MonoBehaviour {
 		if(ate) {
 			GameObject g = (GameObject)Instantiate(tailPrefab, v, Quaternion.identity);
 			currentScore += 1;				// 1 point to Snek for eating
+			asFoodPickup.Play(); // Play food pickup sound
 			tail.Insert(0, g.transform);
 			ate = false;
 		} else if (tail.Count > 0) {
 			tail.Last().position = v;
-
 			tail.Insert(0, tail.Last());
 			tail.RemoveAt(tail.Count-1);
 		}
@@ -89,6 +95,7 @@ public class Snake : MonoBehaviour {
 			if (!onTheMove){
 				break;
 			}
+			asWalking.Play(); // Play walking sound
 		}
 
 	}

@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.41000003, y: 0.19245602}
   m_AnchorMax: {x: 0.5, y: 0.73184204}
-  m_AnchoredPosition: {x: 237.8, y: -176.6}
-  m_SizeDelta: {x: 6.82, y: -270}
+  m_AnchoredPosition: {x: 101.051, y: -211.1}
+  m_SizeDelta: {x: 284.302, y: -207.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &163328963
 MonoBehaviour:
@@ -182,18 +182,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 56
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: '
+  m_Text: Score
 --- !u!222 &163328964
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -918,6 +918,7 @@ MonoBehaviour:
   ate: 0
   ateUpdate: 0
   tailPrefab: {fileID: 1967766260939424, guid: 091b8cd2dbcc72b4e8e9d1a13d7af4c7, type: 3}
+  Score: {fileID: 163328963}
   speed: 0.1
 --- !u!50 &1728258323
 Rigidbody2D:

@@ -27,9 +27,7 @@ public class Snake : MonoBehaviour {
 		StartCoroutine(MoveUpdate());
 		currentDir = dir;
 
-		
-		Score.text = "haha";
-		//score. = "Score: " + currentScore; 
+		Score.text = "Score: " + currentScore; 
 	}
 	
 	// Update is called once per frame
@@ -50,7 +48,7 @@ public class Snake : MonoBehaviour {
 			speed*=5;
 		}
 
-	//	score.text = "Score: " + currentScore; 
+		Score.text = "Score: " + currentScore; 
 	}
 
 	void Move() {

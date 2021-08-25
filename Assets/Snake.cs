@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class Snake : MonoBehaviour {
@@ -8,14 +9,14 @@ public class Snake : MonoBehaviour {
 	Vector2 dir = Vector2.right; //starting direction
 	Vector2 currentDir;
 
-	
-
 	List<Transform> tail = new List<Transform>(); // List of tail pieces
 
 	public bool ate = false; //did snek just ate?
 	public bool ateUpdate = false;
 
 	public GameObject tailPrefab; //assign tail prefab later
+	public Text Score;				// Displays "Score: x"
+	private int currentScore = 0;	// Keeps track
 
 	public float speed = 0.2f;
 
@@ -25,6 +26,10 @@ public class Snake : MonoBehaviour {
 		//InvokeRepeating(Move(), speed, speed); old move update
 		StartCoroutine(MoveUpdate());
 		currentDir = dir;
+
+		
+		Score.text = "haha";
+		//score. = "Score: " + currentScore; 
 	}
 	
 	// Update is called once per frame
@@ -41,10 +46,11 @@ public class Snake : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.LeftShift)){
 			speed/=5;
-		}
-		if(Input.GetKeyUp(KeyCode.LeftShift)){
+		} else if(Input.GetKeyUp(KeyCode.LeftShift)){
 			speed*=5;
 		}
+
+	//	score.text = "Score: " + currentScore; 
 	}
 
 	void Move() {
@@ -55,7 +61,7 @@ public class Snake : MonoBehaviour {
 
 		if(ate) {
 			GameObject g = (GameObject)Instantiate(tailPrefab, v, Quaternion.identity);
-
+			currentScore += 1;				// 1 point to Snek for eating
 			tail.Insert(0, g.transform);
 			ate = false;
 		}

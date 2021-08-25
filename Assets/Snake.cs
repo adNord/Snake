@@ -101,7 +101,7 @@ public class Snake : MonoBehaviour {
 			ate = true;
 			ateUpdate = true;
 			Destroy(coll.gameObject);
-		} else if (coll.name.StartsWith("Border")) {
+		} else if (coll.name.StartsWith("Border") || (coll.name.StartsWith("Tail"))) {
 			onTheMove = false;
 			StopCoroutine(MoveUpdate());
 			GameOverScreen.Setup(currentScore);

@@ -73,9 +73,7 @@ public class Snake : MonoBehaviour {
 			currentScore += 1;				// 1 point to Snek for eating
 			tail.Insert(0, g.transform);
 			ate = false;
-		}
-
-		if (tail.Count > 0) {
+		} else if (tail.Count > 0) {
 			tail.Last().position = v;
 
 			tail.Insert(0, tail.Last());
@@ -105,6 +103,7 @@ public class Snake : MonoBehaviour {
 			onTheMove = false;
 			StopCoroutine(MoveUpdate());
 			GameOverScreen.Setup(currentScore);
+			Score.gameObject.SetActive(false);
 		}
 	}
 }

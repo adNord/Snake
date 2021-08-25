@@ -54,6 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Snake.cs" />
+    <Compile Include="Assets\GameOverScreen.cs" />
     <Compile Include="Assets\SpawnFood.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -11,19 +11,30 @@ public class Snake : MonoBehaviour {
 
 	List<Transform> tail = new List<Transform>(); // List of tail pieces
 
-	public bool ate = false; //did snek just ate?
-	public bool ateUpdate = false;
+	public bool ate; //did snek just ate?
+	public bool ateUpdate;
 
 	public GameObject tailPrefab; //assign tail prefab later
 	public Text Score;				// Displays "Score: x"
 	private int currentScore = 0;	// Keeps track
 
-	public float speed = 0.2f;
+	public GameOverScreen GameOverScreen;
+
+	public float speed;
+
+	bool onTheMove;
 
 	// Use this for initialization
 	void Start () {
 		// call "move" function every speed
 		//InvokeRepeating(Move(), speed, speed); old move update
+		onTheMove = true;
+		speed = 0.2f;
+		ate = false;
+		ateUpdate = false;
+
+		transform.position = new Vector2(0, 0);
+
 		StartCoroutine(MoveUpdate());
 		currentDir = dir;
 
@@ -77,6 +88,9 @@ public class Snake : MonoBehaviour {
 		for(;;){
 			Move();
 			yield return new WaitForSeconds(speed);
+			if (!onTheMove){
+				break;
+			}
 		}
 
 	}
@@ -87,8 +101,10 @@ public class Snake : MonoBehaviour {
 			ate = true;
 			ateUpdate = true;
 			Destroy(coll.gameObject);
-		} else {
-			//TODO (lose screen)
+		} else if (coll.name.StartsWith("Border") || (coll.name.StartsWith("Tail"))) {
+			onTheMove = false;
+			StopCoroutine(MoveUpdate());
+			GameOverScreen.Setup(currentScore);
 		}
 	}
 }

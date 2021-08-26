@@ -17,6 +17,7 @@ public class Snake : MonoBehaviour {
 	public GameObject tailPrefab; //assign tail prefab later
 	List<Transform> tail = new List<Transform>(); // List of tail pieces
 	public float speed;
+
 	bool onTheMove;
 	public bool ate; //did snek just ate?
 	public bool ateUpdate;
@@ -31,7 +32,7 @@ public class Snake : MonoBehaviour {
 		// call "move" function every speed
 		//InvokeRepeating(Move(), speed, speed); old move update
 		onTheMove = true;
-		speed = 0.2f;
+		speed = PlayerPrefs.GetFloat("speed");
 		ate = false;
 		ateUpdate = false;
 	

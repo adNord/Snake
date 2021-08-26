@@ -13,8 +13,8 @@ public class SettingsMenu : MonoBehaviour
         m_Slider.value = PlayerPrefs.GetFloat("MasterVolume");
     }
 
-    public void SetVolume(float volume){
-        audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("MasterVolume", volume);
+    public void SetVolume(Slider slider){
+        audioMixer.SetFloat("volume", Mathf.Log10(slider.value) * 20);
+        PlayerPrefs.SetFloat("MasterVolume", slider.value);
     }
 }

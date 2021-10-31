@@ -1,5 +1,5 @@
 # Latest Release
-* https://github.com/adNord/Snake/releases
+* https://github.com/adNord/Snake/releases/tag/Snek_1.02
 
 # Releases
 * https://github.com/adNord/Snake/releases

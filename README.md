@@ -14,7 +14,7 @@ Snek is a game for cool humans and other intelligent species. Our game offers:
 * A square box where Snek can move around (although sometimes he slips out the mad lad)
 * Three difficulty options: egg, boa consctrictor, and king cobra. Are you up for the challange? 
 
-# 'Yes!' say these men on GitHub, 'The pictures belong to everyone!'
+# 'Yes!' says the man on github, 'The pics belong to everyone!'
 * And with the sweat of our brows, the pictures can become yours as well.
 * Game screen, Main screen, and Options screen:
 ![alt game screen](https://github.com/lucasnordic/Snake/blob/master/github_assets/Snek_1.02/Screenshot%202021-10-31%20221952.jpg)
